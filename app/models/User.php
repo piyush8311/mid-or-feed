@@ -4,10 +4,10 @@ namespace Newsfeed\Model;
 
 class User {
 
-	private static $id;
-	private static $username;
-	private static $email;
-	private static $password;
+	private $id;
+	private $username;
+	private $email;
+	private $password;
 
 	
 	public function __construct($user_params) {
@@ -16,7 +16,7 @@ class User {
 
 	public static function createUser($username, $email, $password) {
 		$query = Database::get_instance()->prepare("
-			INSERT INTO Users (username, email, password)
+			INSERT INTO users (username, email, password)
 			VALUES (:username, :email, :password)
 			");
 		query->bindParam(':username', $username);
@@ -28,11 +28,11 @@ class User {
 
 	public static function getUser($email, $password) {
 		$query = Database::get_instance()->prepare("
-			SELECT * FROM Users WHERE email = :email AND password = :password
+			SELECT * FROM users WHERE email = :email AND password = :password
 			");
 		query->bindParam(':email', $email);
 		query->bindParam(':password', $password);
-		
+
 		query->execute();
 
 		$user_params = $query->fetch(PDO::FETCH_ASSOC);
@@ -41,7 +41,7 @@ class User {
 
 	public static function getUserByEmail($email) {
 		$query = Database::get_instance()->prepare("
-			SELECT * FROM Users WHERE email = :email
+			SELECT * FROM users WHERE email = :email
 			");
 		query->bindParam(':email', $email);
 
