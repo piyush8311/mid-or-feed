@@ -1,7 +1,7 @@
 <?php
 namespace Newsfeed\Lib;
 
-use Newsfeed\Model;
+use Newsfeed\Model\User;
 
 class Session {
 
