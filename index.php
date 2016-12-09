@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php'
+require 'vendor/autoload.php';
 
 session_start();
 
@@ -8,6 +8,8 @@ ToroHook::add('404', function() {
 });
 
 Toro::serve(array(
-	"/" =>
+	"/" => "HomeHandler",
+	"login" => "LoginHandler",
+	"register" => "RegisterHandler"
 ));
 ?>

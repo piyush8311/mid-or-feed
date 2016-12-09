@@ -1,6 +1,6 @@
 <?php
 
-namespace Newsfeed\Model;
+namespace Newsfeed\Model\User;
 
 class User {
 
@@ -9,7 +9,6 @@ class User {
 	private $email;
 	private $password;
 
-	
 	public function __construct($user_params) {
 		this->update_user_params($user_params);
 	}
