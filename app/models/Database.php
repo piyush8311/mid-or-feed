@@ -1,6 +1,6 @@
 <?php
 
-namespace Newsfeed\Model;
+namespace Newsfeed\Model\Database;
 
 class Database {
 	private static $instance;

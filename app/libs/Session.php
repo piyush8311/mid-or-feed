@@ -1,5 +1,5 @@
 <?php
-namespace Newsfeed\Lib;
+namespace Newsfeed\Lib\Session;
 
 use Newsfeed\Model\User;
 
