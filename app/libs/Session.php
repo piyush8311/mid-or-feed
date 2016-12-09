@@ -1,5 +1,5 @@
 <?php
-namespace Newsfeed\Lib\Session;
+namespace Newsfeed\Lib;
 
 use Newsfeed\Model\User;
 
@@ -10,10 +10,10 @@ class Session {
 	}
 
 	public static function logout() {
-		if(getLoggedInUser()) {
+		if(null!=Session::getLoggedInUser()) {
 			session_unset();
 			session_destroy();
-			header("location: index.html");
+			header("location: /");
 			exit();
 		}
 	}

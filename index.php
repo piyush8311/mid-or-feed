@@ -1,9 +1,11 @@
 <?php
 require 'vendor/autoload.php';
+require 'config/dbconfig.php';
 
-use Newsfeed\Model\HomeHandler;
-use Newsfeed\Model\LoginHandler;
-use Newsfeed\Model\RegisterHandler;
+use Newsfeed\Controller\HomeHandler;
+use Newsfeed\Controller\LoginHandler;
+use Newsfeed\Controller\RegisterHandler;
+use Newsfeed\Controller\LogoutHandler;
 
 session_start();
 
@@ -12,8 +14,9 @@ ToroHook::add('404', function() {
 });
 
 Toro::serve(array(
-	"/" => "HomeHandler",
-	"login" => "LoginHandler",
-	"register" => "RegisterHandler"
+	"/" => "Newsfeed\Controller\HomeHandler",
+	"login" => "Newsfeed\Controller\LoginHandler",
+	"logout" => "Newsfeed\Controller\LogoutHandler",
+	"register" => "Newsfeed\Controller\RegisterHandler"
 ));
 ?>

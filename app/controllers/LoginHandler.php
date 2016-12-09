@@ -9,8 +9,8 @@ class LoginHandler {
 
 	public function get() {
 		$user = Session::getLoggedInUser();
-		if($user) {
-			include('views/login.php');
+		if(null!=$user) {
+			include('app/views/login.php');
 		} else {
 			header("location: /");
 		}
@@ -22,9 +22,9 @@ class LoginHandler {
 
 		$user = User::getUser($email, $password);
 
-		if($user) {
+		if(null!=$user) {
 			Session::login($email);
-			include('views/login.php');
+			include('app/views/login.php');
 		} else {
 			header("location: /");
 		}			

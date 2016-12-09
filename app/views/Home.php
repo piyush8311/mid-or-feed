@@ -2,7 +2,7 @@
 {% block content %}
 <div id="main">
 	<h1>Login Form</h1>
-	<form action="/login" method="post">
+	<form action="/login" method="POST">
 		<label>email : </label>
 		<input id="email" name="email" placeholder="email" type="text" />
 		<label>password : </label>

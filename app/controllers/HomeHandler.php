@@ -10,7 +10,7 @@ class HomeHandler {
 		if($user) {
 			header("location: /login");
 		} else {
-			include('views/Home.php');
+			include("app/views/Home.php");
 		}
 	}
 }

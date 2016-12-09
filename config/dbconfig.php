@@ -1,10 +1,8 @@
 <?php
 
-global $CONFIG = array();
-
-$CONFIG["host"] = "localhost";
-$CONFIG["dbname"] = "newsfeed";
-$CONFIG["username"] = "root";
-$CONFIG["password"] = "piyush123";
+$CONFIG = array("host" => "localhost",
+				"dbname" => "newsfeed",
+				"username" => "root",
+				"password" => "piyush123");
 
 ?>
