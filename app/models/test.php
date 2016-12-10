@@ -2,25 +2,28 @@
 
 
 require '../../config/dbconfig.php'; 
+require 'Database.php';
+
+use Newsfeed\Model\Database;
 
 global $CONFIG;
 
+$username = "sss";
+$email = "test@123.com";
+$password =  "piyushasd";
+$user_id = 3;
+$news = "Asdadad";
 
-$email = "Asda";
-$password =  "nbv";
-$instance = new \PDO("mysql:host={$CONFIG['host']};dbname={$CONFIG['dbname']}", $CONFIG['username'], $CONFIG['password']);
-$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-$instance->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-
-$query = $instance->prepare("
-			SELECT * FROM users WHERE email = :email AND password = :password
+$query = Database::get_instance()->prepare("
+			INSERT INTO feeds (user_id, news)
+			VALUES (:user_id, :news)
 			");
-		$query->bindParam(':email', $email);
-		$query->bindParam(':password', $password);
+		$query->bindParam(':user_id', $user_id);
+		$query->bindParam(':news', $news);
+		//$query->bindParam(':password', $password);
 
 		$query->execute();
 
-		$user_params = $query->fetch(\PDO::FETCH_ASSOC);
-if($user_params)
-	echo 123;
+//$user_params = $query->fetch(\PDO::FETCH_ASSOC);
+//echo $user_params['id'];
 ?>

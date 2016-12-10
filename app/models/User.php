@@ -63,6 +63,9 @@ class User {
 		$this->password = $user_params['password'];
 	}
 
+	public function getId() {
+		return $this->id;
+	}
 	/*public function getUsername() {
 		return $this->$username;
 	}

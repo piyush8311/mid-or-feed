@@ -16,6 +16,7 @@ class RegisterHandler {
 		$password = $_POST['password'];
 
 		$user = User::getUserByEmail($email);
+		
 		if(null != $user) {
 			header("location: /login");
 		} else {
