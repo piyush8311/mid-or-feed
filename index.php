@@ -19,6 +19,6 @@ Toro::serve(array(
 	"login" => "Newsfeed\Controller\LoginHandler",
 	"logout" => "Newsfeed\Controller\LogoutHandler",
 	"register" => "Newsfeed\Controller\RegisterHandler",
-	"submit" => "Newsfeed\Controller\SubmitHandler"
+	"submit?:string" => "Newsfeed\Controller\SubmitHandler"
 ));
 ?>
