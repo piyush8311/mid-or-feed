@@ -15,6 +15,7 @@ class LoginHandler {
 			include('app/views/login.php');
 		} else {
 			header("location: /");
+			die();
 		}
 	}
 
@@ -30,6 +31,7 @@ class LoginHandler {
 			include('app/views/login.php');
 		} else {
 			header("location: /");
+			die();
 		}			
 	}
 }

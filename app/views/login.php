@@ -1,5 +1,3 @@
-{% extends "layout.html" %}
-{% block content %}
 <a href="/logout"> logout </a>
 <script>
 
@@ -10,30 +8,36 @@ function ajaxFunc() {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
+    var myList = document.getElementById("myList");
+    var newItem = document.createElement("li");
+
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("newPost").innerHTML = this.responseText;
+        	var textNode = document.createTextNode(this.responseText);
+        	newItem.appendChild(textNode);
+        	myList.insertBefore(newItem, myList.childNodes[0]);
+        	document.getElementById("myPost").value = "";
         }
     };
 
-    var myPost = document.getElementById('myPost').value;
-    var url = "submit?news=" + myPost;
+    var myForm = new FormData();
+    myForm.append('news', document.getElementById('myPost').value);
 
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+    var url = "submit";
+
+    xmlhttp.open("POST", url, true);
+    xmlhttp.send(myForm);
 }
 
 </script>
 <form>
 	<label> What's on your mind? :P </label>
-	<textarea id="myPost"name="news" row="7" columns="25"></textarea>
+	<textarea id="myPost" name="news" row="7" columns="25"></textarea>
 	<input value="submit" type="button" onclick="ajaxFunc()"  />
 </form>
-<ul>
-<span id = "newPost"> </span>
+<ul id="myList">
 <?php foreach($feeds as $feed): ?>
 	<span> <li> <?php echo htmlspecialchars($feed->getNews()) ?> </li> </span>
 <?php endforeach ?>
 </ul>
  
-{% endblock %}

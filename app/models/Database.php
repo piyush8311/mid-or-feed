@@ -13,12 +13,11 @@ class Database {
 				self::$instance = new \PDO("mysql:host={$CONFIG['host']};dbname={$CONFIG['dbname']}", $CONFIG['username'], $CONFIG['password']);
 				self::$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 	    		self::$instance->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-
-	    		return self::$instance;
 			}
 		} catch(PDOException $e) {
 			echo "Error ";
 		}
+   		return self::$instance;
 	}
 }
 ?>

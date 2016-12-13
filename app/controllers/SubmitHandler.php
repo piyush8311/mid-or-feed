@@ -6,12 +6,12 @@ use Newsfeed\Lib\Session;
 use Newsfeed\Model\Feed;
 
 class SubmitHandler {
-	public function get() {
-		$news = $_GET['news'];
+	public function post() {
+		$news = $_POST['news'];
 		$user = Session::getLoggedInUser();
 		Feed::createFeed($user, $news);
 
-		echo "<li>" . $news . "</li>";
+		echo $news;
 	}
 }
 

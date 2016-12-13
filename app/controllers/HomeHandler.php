@@ -9,6 +9,7 @@ class HomeHandler {
 		$user = Session::getLoggedInUser();
 		if($user) {
 			header("location: /login");
+			die();
 		} else {
 			include("app/views/Home.php");
 		}

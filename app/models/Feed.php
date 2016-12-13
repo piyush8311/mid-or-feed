@@ -16,11 +16,8 @@ class Feed {
 	}
 
 	public static function createFeed($user, $news) {
-		global $CONFIG;
-		$instance = new \PDO("mysql:host={$CONFIG['host']};dbname={$CONFIG['dbname']}", $CONFIG['username'], $CONFIG['password']);
-		$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-	    $instance->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-		$query = $instance->prepare("
+	    $instance = Database::get_instance();
+		$query = Database::get_instance()->prepare("
 			INSERT INTO feeds (user_id, news)
 			VALUES (:user_id, :news)
 		");
@@ -32,11 +29,9 @@ class Feed {
 	}
 
 	public static function getFeeds() {
-		global $CONFIG;
-		$instance = new \PDO("mysql:host={$CONFIG['host']};dbname={$CONFIG['dbname']}", $CONFIG['username'], $CONFIG['password']);
-		$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-	    $instance->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-		$query = $instance->prepare("
+	
+	    $instance = Database::get_instance();
+		$query = Database::get_instance()->prepare("
 			SELECT * FROM feeds ORDER BY created_at DESC;
 		");
 
@@ -59,5 +54,9 @@ class Feed {
 
 	public function getUserId() {
 		return $this->user_id;
+	}
+
+	public function getCreatedAt() {
+		return $this->created_at;
 	}
 }

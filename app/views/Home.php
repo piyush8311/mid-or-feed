@@ -1,5 +1,3 @@
-{% extends "layout.html" %}
-{% block content %}
 <div id="main">
 	<h1>Login Form</h1>
 	<form action="/login" method="POST">
@@ -11,4 +9,3 @@
 	</form>
 	<a href="/register"> Register </a>
 </div>
-{% endblock %}

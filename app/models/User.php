@@ -26,6 +26,7 @@ class User {
 	}
 
 	public static function getUser($email, $password) {
+		$instance = Database::get_instance();
 		$query = Database::get_instance()->prepare("
 			SELECT * FROM users WHERE email = :email AND password = :password
 			");
@@ -66,10 +67,10 @@ class User {
 	public function getId() {
 		return $this->id;
 	}
-	/*public function getUsername() {
+	public function getUsername() {
 		return $this->$username;
 	}
-
+	/*
 	public function getEmail() {
 		return $this->$email;
 	}
