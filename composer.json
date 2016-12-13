@@ -1,0 +1,10 @@
+{
+    "require": {
+        "torophp/torophp": "dev-master"
+    },
+    "autoload": {
+    	"classmap": [
+    		"app"
+    	]
+    }
+}
